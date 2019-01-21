@@ -1,0 +1,7 @@
+acme:
+  map:
+    key1:
+      name: dev name 1
+    key2:
+      name: dev name 2
+      description: dev description 2

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.freshtxp.core.dal.mybatis.PrizeLogDOMapper">
+  <resultMap id="BaseResultMap" type="com.freshtxp.core.dal.domain.PrizeLogDO">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="member_id" jdbcType="VARCHAR" property="memberId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="award_id" jdbcType="VARCHAR" property="awardId" />
+    <result column="award_type" jdbcType="VARCHAR" property="awardType" />
+    <result column="activity_type" jdbcType="VARCHAR" property="activityType" />
+    <result column="benefit_group" jdbcType="VARCHAR" property="benefitGroup" />
+    <result column="attributes" jdbcType="VARCHAR" property="attributes" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="is_deleted" jdbcType="CHAR" property="isDeleted" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+    <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.freshtxp.core.dal.domain.PrizeLogDO">
+    <result column="member_name" jdbcType="VARBINARY" property="memberName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, member_id, open_id, award_id, award_type, activity_type, benefit_group, attributes, 
+    gmt_create, gmt_modified, is_deleted, version, seller_id
+  </sql>
+  <sql id="Blob_Column_List">
+    member_name
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.freshtxp.core.dal.domain.PrizeLogDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from txp_prize_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.freshtxp.core.dal.domain.PrizeLogDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from txp_prize_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.freshtxp.core.dal.domain.PrizeLogDOExample">
+    delete from txp_prize_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.freshtxp.core.dal.domain.PrizeLogDO">
+    insert into txp_prize_log (id, member_id, open_id, 
+      award_id, award_type, activity_type, 
+      benefit_group, attributes, gmt_create, 
+      gmt_modified, is_deleted, version, 
+      seller_id, member_name)
+    values (#{id,jdbcType=BIGINT}, #{memberId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{awardId,jdbcType=VARCHAR}, #{awardType,jdbcType=VARCHAR}, #{activityType,jdbcType=VARCHAR}, 
+      #{benefitGroup,jdbcType=VARCHAR}, #{attributes,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=CHAR}, #{version,jdbcType=BIGINT}, 
+      #{sellerId,jdbcType=BIGINT}, #{memberName,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.freshtxp.core.dal.domain.PrizeLogDO">
+    insert into txp_prize_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="awardId != null">
+        award_id,
+      </if>
+      <if test="awardType != null">
+        award_type,
+      </if>
+      <if test="activityType != null">
+        activity_type,
+      </if>
+      <if test="benefitGroup != null">
+        benefit_group,
+      </if>
+      <if test="attributes != null">
+        attributes,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+      <if test="memberName != null">
+        member_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardId != null">
+        #{awardId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardType != null">
+        #{awardType,jdbcType=VARCHAR},
+      </if>
+      <if test="activityType != null">
+        #{activityType,jdbcType=VARCHAR},
+      </if>
+      <if test="benefitGroup != null">
+        #{benefitGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="attributes != null">
+        #{attributes,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="memberName != null">
+        #{memberName,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.freshtxp.core.dal.domain.PrizeLogDOExample" resultType="java.lang.Long">
+    select count(*) from txp_prize_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update txp_prize_log
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.memberId != null">
+        member_id = #{record.memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openId != null">
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardId != null">
+        award_id = #{record.awardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.awardType != null">
+        award_type = #{record.awardType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activityType != null">
+        activity_type = #{record.activityType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.benefitGroup != null">
+        benefit_group = #{record.benefitGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attributes != null">
+        attributes = #{record.attributes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=BIGINT},
+      </if>
+      <if test="record.sellerId != null">
+        seller_id = #{record.sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.memberName != null">
+        member_name = #{record.memberName,jdbcType=VARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update txp_prize_log
+    set id = #{record.id,jdbcType=BIGINT},
+      member_id = #{record.memberId,jdbcType=VARCHAR},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      award_id = #{record.awardId,jdbcType=VARCHAR},
+      award_type = #{record.awardType,jdbcType=VARCHAR},
+      activity_type = #{record.activityType,jdbcType=VARCHAR},
+      benefit_group = #{record.benefitGroup,jdbcType=VARCHAR},
+      attributes = #{record.attributes,jdbcType=VARCHAR},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      is_deleted = #{record.isDeleted,jdbcType=CHAR},
+      version = #{record.version,jdbcType=BIGINT},
+      seller_id = #{record.sellerId,jdbcType=BIGINT},
+      member_name = #{record.memberName,jdbcType=VARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update txp_prize_log
+    set id = #{record.id,jdbcType=BIGINT},
+      member_id = #{record.memberId,jdbcType=VARCHAR},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      award_id = #{record.awardId,jdbcType=VARCHAR},
+      award_type = #{record.awardType,jdbcType=VARCHAR},
+      activity_type = #{record.activityType,jdbcType=VARCHAR},
+      benefit_group = #{record.benefitGroup,jdbcType=VARCHAR},
+      attributes = #{record.attributes,jdbcType=VARCHAR},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      is_deleted = #{record.isDeleted,jdbcType=CHAR},
+      version = #{record.version,jdbcType=BIGINT},
+      seller_id = #{record.sellerId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

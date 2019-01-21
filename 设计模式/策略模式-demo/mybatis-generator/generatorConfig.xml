@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<properties resource="jdbc.properties" />-->
+
+
+    <context id="sqlserverTables" targetRuntime="MyBatis3">
+        <!-- 生成的pojo，将implements Serializable-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://rm-2ze93c1c4te72l6u7fo.mysql.rds.aliyuncs.com:3306/txp"
+                        userId="lz"
+                        password="lz_123">
+        </jdbcConnection>
+
+
+        <!--
+        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+            true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+        -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--
+        生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如/Users/shushangjin/IdeaProjects/code1/my-util/src/main/java，
+        也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下
+        -->
+        <!--<javaModelGenerator targetPackage="com.joey.mybaties.test.pojo" targetProject="MAVEN">-->
+        <javaModelGenerator targetPackage="com.freshtxp.core.dal.domain" targetProject="/Volumes/Code/project/策略模式/src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--对应的mapper.xml文件  -->
+        <sqlMapGenerator targetPackage="mybatis" targetProject="/Volumes/Code/project/策略模式/src/main/resources/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 对应的Mapper接口类文件 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.freshtxp.core.dal.mybatis" targetProject="/Volumes/Code/project/策略模式/src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->
+
+        <table tableName="txp_task_info" domainObjectName="TaskInfoDO">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <!--<table tableName="txp_message_log" domainObjectName="MessageLogDO">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="txp_account_role" domainObjectName="AccountRoleDo">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="txp_role_grant" domainObjectName="RoleGrantDo">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="txp_resources" domainObjectName="ResourcesDo">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="txp_vendor_produce_plan" domainObjectName="VendorProducePlanDO">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="txp_suborder" domainObjectName="SubOrderDO">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="txp_performance_plan" domainObjectName="PerformancePlanDO" >-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="txp_performance_order" domainObjectName="PerformanceOrderDO">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="txp_order" domainObjectName="OrderDO">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="txp_delivery_order" domainObjectName="DeliveryOrderDO">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--</table>-->
+    </context>
+</generatorConfiguration>
