@@ -85,29 +85,29 @@ public class BenefitRule {
         BenefitRule benefitRule = new BenefitRule();
 
         // 奖品ID
-        benefitRule.setAwardId("69566174C1A709C4E9A6CEB912A56C6A");
+        benefitRule.setAwardId("66F81559A366A6F7930C293958A9640C");
 
         // 奖金池
-        benefitRule.setBenefitGroup("signInPrizeTarget");
+        benefitRule.setBenefitGroup("sharePrize");
 
         // 初始化库存--
-        benefitRule.setInitInventory(20000);
+        benefitRule.setInitInventory(7000);
 
         // 总数量
-        benefitRule.setTotalInventory(20000);
+        benefitRule.setTotalInventory(7000);
 
         // 扩展 {'money': '10.10'}
-        benefitRule.setAttributes("{'money': '0.58'}");
+        benefitRule.setAttributes("{'money':'0.58'}");
 
         // 默认中奖概率
-        benefitRule.setDefWinRate(22.73D);
+        benefitRule.setDefWinRate(6.25D);
 
         // 奖品类型 coupon  mouCommonFpRedEnvelope
 //        benefitRule.setAwardType("coupon");
         benefitRule.setAwardType("mouCommonFpRedEnvelope");
 
         // 权益id(红包使用)
-        benefitRule.setBenefitId("21322002");
+        benefitRule.setBenefitId("21316002");
 
 
         // 增量规则
