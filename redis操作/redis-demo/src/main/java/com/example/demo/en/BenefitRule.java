@@ -100,7 +100,7 @@ public class BenefitRule {
         benefitRule.setAttributes("{'money':'0.58'}");
 
         // 默认中奖概率
-        benefitRule.setDefWinRate(6.25D);
+        benefitRule.setDefWinRate(6.25D/100);
 
         // 奖品类型 coupon  mouCommonFpRedEnvelope
 //        benefitRule.setAwardType("coupon");
