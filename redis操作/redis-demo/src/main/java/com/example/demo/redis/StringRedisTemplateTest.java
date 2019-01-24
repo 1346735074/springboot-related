@@ -28,6 +28,10 @@ public class StringRedisTemplateTest {
 
 
     public void test(){
+
+        String test11111 = stringRedisTemplate.opsForValue().get("test11111");
+
+
         //向redis里存入数据和设置缓存时间
         stringRedisTemplate.opsForValue().set("test", "100",60*10,TimeUnit.SECONDS);
 
@@ -38,7 +42,13 @@ public class StringRedisTemplateTest {
         String test4 = stringRedisTemplate.opsForValue().get("test");
 
         //val +1
-        Long test3 = stringRedisTemplate.boundValueOps("test").increment(1);
+        Long test3 = stringRedisTemplate.boundValueOps("test11").increment(-1);
+        stringRedisTemplate.expire("test11", 1, TimeUnit.DAYS);
+
+        Long test311 = stringRedisTemplate.boundValueOps("test1").increment(1);
+
+        //val +1
+        Long test31 = stringRedisTemplate.boundValueOps("test1").increment(1);
 
         //根据key获取过期时间
         Long test2 = stringRedisTemplate.getExpire("test");

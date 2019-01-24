@@ -4,6 +4,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -19,6 +20,8 @@ public class RedisTemplateTest {
     private RedisTemplate redisTemplate;
 
     public void test(){
+        // 设置超时
+        Boolean max = redisTemplate.expire("max", 1, TimeUnit.SECONDS);
         redisTemplate.opsForValue();//操作字符串
         redisTemplate.opsForHash();//操作hash
         redisTemplate.opsForList();//操作list
