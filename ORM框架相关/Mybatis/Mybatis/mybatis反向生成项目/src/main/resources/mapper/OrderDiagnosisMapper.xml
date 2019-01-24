@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jifen.dao.OrderDiagnosisMapper">
+  <resultMap id="BaseResultMap" type="com.jifen.entity.OrderDiagnosis">
+    <id column="only_id" jdbcType="VARCHAR" property="onlyId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="total_prices" jdbcType="DECIMAL" property="totalPrices" />
+    <result column="creation_time" jdbcType="TIMESTAMP" property="creationTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    only_id, open_id, total_prices, creation_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_diagnosis
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_diagnosis
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jifen.entity.OrderDiagnosis">
+    insert into order_diagnosis (only_id, open_id, total_prices, 
+      creation_time)
+    values (#{onlyId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{totalPrices,jdbcType=DECIMAL}, 
+      #{creationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jifen.entity.OrderDiagnosis">
+    insert into order_diagnosis
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="onlyId != null">
+        only_id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="totalPrices != null">
+        total_prices,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="onlyId != null">
+        #{onlyId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrices != null">
+        #{totalPrices,jdbcType=DECIMAL},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jifen.entity.OrderDiagnosis">
+    update order_diagnosis
+    <set>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrices != null">
+        total_prices = #{totalPrices,jdbcType=DECIMAL},
+      </if>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jifen.entity.OrderDiagnosis">
+    update order_diagnosis
+    set open_id = #{openId,jdbcType=VARCHAR},
+      total_prices = #{totalPrices,jdbcType=DECIMAL},
+      creation_time = #{creationTime,jdbcType=TIMESTAMP}
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

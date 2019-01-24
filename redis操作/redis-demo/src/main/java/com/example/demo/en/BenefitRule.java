@@ -85,40 +85,49 @@ public class BenefitRule {
         BenefitRule benefitRule = new BenefitRule();
 
         // 奖品ID
-        benefitRule.setAwardId("cb3f0832a98e4f47be440066befe65a8");
+        benefitRule.setAwardId("69566174C1A709C4E9A6CEB912A56C6A");
 
         // 奖金池
-        benefitRule.setBenefitGroup("sharePrize");
+        benefitRule.setBenefitGroup("signInPrizeTarget");
 
         // 初始化库存--
-        benefitRule.setInitInventory(300);
+        benefitRule.setInitInventory(0);
 
         // 总数量
-        benefitRule.setTotalInventory(300);
+        benefitRule.setTotalInventory(20000);
 
         // 扩展 {'money': '10.10'}
-        benefitRule.setAttributes("{'money':'200'}");
+        benefitRule.setAttributes("{'money':'0.58'}");
 
         // 默认中奖概率
-        benefitRule.setDefWinRate(20D/100);
+        benefitRule.setDefWinRate(19.74D/100);
 
         // 奖品类型 coupon  mouCommonFpRedEnvelope
-        benefitRule.setAwardType("coupon");
-//        benefitRule.setAwardType("mouCommonFpRedEnvelope");
+//        benefitRule.setAwardType("coupon");
+        benefitRule.setAwardType("mouCommonFpRedEnvelope");
 
         // 权益id(红包使用)
-//        benefitRule.setBenefitId("21320003");
+        benefitRule.setBenefitId("21322002");
 
 
         // 增量规则
-//        ArrayList<IncrRule> objects = new ArrayList<>();
-//        IncrRule incrRule = new IncrRule();
-//        incrRule.setStartDate(new Date(new java.util.Date().getTime()));
-//        incrRule.setEndDate(new Date(new java.util.Date().getTime()));
-//        incrRule.setWinRate(0.0D);
-//        incrRule.setMaxInventory(0);
-//        objects.add(incrRule);
-//        benefitRule.setIncrRules(objects);
+        ArrayList<IncrRule> objects = new ArrayList<>();
+        IncrRule incrRule = new IncrRule();
+        //2018-09-09 00:00:00
+        incrRule.setStartDate(new Date(new java.util.Date().getTime()));
+
+        incrRule.setEndDate(new Date(new java.util.Date().getTime()));
+
+        incrRule.setWinRate(43.64D);
+
+        incrRule.setMaxInventory(4800);
+
+
+
+
+
+        objects.add(incrRule);
+        benefitRule.setIncrRules(objects);
 
         log.info("BenefitRule  =   {}",GSON.toJson(benefitRule));
     }
