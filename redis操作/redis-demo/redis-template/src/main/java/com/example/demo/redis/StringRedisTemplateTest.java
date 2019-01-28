@@ -12,8 +12,6 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
- *
  * @author zhaoyao
  * @version 1.0
  * @date 2019-01-15
@@ -25,14 +23,30 @@ public class StringRedisTemplateTest {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
+    // 这个*一定要加，否则无法模糊查询
+    public static final String PREFIX = "test*";
 
-    public void test(){
+    public void test1() {
+//        String prefix = String.format(USER_CARDS, AppContext.getSellerId(), "*");
+//        Set<String> keys = stringRedisTemplate.keys(prefix);
+
+        // 获取redis中以某些字符串为前缀的KEY列表
+        Set<String> keys = stringRedisTemplate.keys(PREFIX);
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+        stringRedisTemplate.opsForCluster().
+    }
+
+
+    public void test() {
 
         String test11111 = stringRedisTemplate.opsForValue().get("test11111");
 
 
         //向redis里存入数据和设置缓存时间
-        stringRedisTemplate.opsForValue().set("test", "100",60*10,TimeUnit.SECONDS);
+        stringRedisTemplate.opsForValue().set("test", "100", 60 * 10, TimeUnit.SECONDS);
 
         //val做-1操作
         Long test5 = stringRedisTemplate.boundValueOps("test").increment(-1);
@@ -91,7 +105,7 @@ public class StringRedisTemplateTest {
 
     @Data
     @AllArgsConstructor
-    public static class User{
+    public static class User {
         private String name;
         private String pwd;
     }
