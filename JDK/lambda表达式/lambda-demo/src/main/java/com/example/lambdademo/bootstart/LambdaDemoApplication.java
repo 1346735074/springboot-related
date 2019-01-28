@@ -1,4 +1,4 @@
-package com.example.lambdademo;
+package com.example.lambdademo.bootstart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
