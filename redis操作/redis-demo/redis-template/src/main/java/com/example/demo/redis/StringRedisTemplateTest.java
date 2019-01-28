@@ -36,7 +36,7 @@ public class StringRedisTemplateTest {
             System.out.println(key);
         }
 
-        stringRedisTemplate.opsForCluster().
+
     }
 
 
