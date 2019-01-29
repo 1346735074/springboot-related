@@ -18,7 +18,8 @@ public class StringRedisTemplateBootstrap {
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(StringRedisTemplateBootstrap.class, args);
         StringRedisTemplateTest bean = run.getBean(StringRedisTemplateTest.class);
-        bean.test();
-        bean.test1();
+//        bean.test();
+//        bean.test1();
+        bean.map();
     }
 }

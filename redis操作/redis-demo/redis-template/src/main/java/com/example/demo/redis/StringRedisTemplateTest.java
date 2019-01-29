@@ -3,11 +3,13 @@ package com.example.demo.redis;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +39,13 @@ public class StringRedisTemplateTest {
         }
 
 
+    }
+
+    public void map(){
+        String key = "map-test";
+        stringRedisTemplate.opsForHash().put(key, "key1", "234");
+        Map<Object, Object> map = stringRedisTemplate.opsForHash().entries(key);
+        log.info("map");
     }
 
 
