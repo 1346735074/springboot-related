@@ -20,6 +20,7 @@ public class StringRedisTemplateBootstrap {
         StringRedisTemplateTest bean = run.getBean(StringRedisTemplateTest.class);
 //        bean.test();
 //        bean.test1();
-        bean.map();
+//        bean.map();
+        bean.stringList();
     }
 }

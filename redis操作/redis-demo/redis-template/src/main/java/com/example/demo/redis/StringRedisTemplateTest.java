@@ -3,7 +3,6 @@ package com.example.demo.redis;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -39,6 +38,22 @@ public class StringRedisTemplateTest {
         }
 
 
+    }
+
+    public void stringList(){
+        // key 不存在会返回null
+        String test4 = stringRedisTemplate.opsForValue().get("test123456");
+        System.out.println(test4);
+
+        // key 不存在会返回size()为0的set集合
+        Set<String> red_1231 = stringRedisTemplate.opsForSet().members("test-set");
+        for (String str : red_1231){
+            System.out.println(str);
+        }
+
+        // key 不存在会返回felse  值不存在会返回felse
+        Boolean red_123 = stringRedisTemplate.opsForSet().isMember("test-set", "1");
+        System.out.println(red_123);
     }
 
     public void map(){
