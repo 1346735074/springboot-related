@@ -46,7 +46,7 @@ public class StringRedisTemplateTest {
         System.out.println(test4);
 
         // key 不存在会返回size()为0的set集合
-        Set<String> red_1231 = stringRedisTemplate.opsForSet().members("test-set");
+        Set<String> red_1231 = stringRedisTemplate.opsForSet().members("test-set213132132");
         for (String str : red_1231){
             System.out.println(str);
         }
