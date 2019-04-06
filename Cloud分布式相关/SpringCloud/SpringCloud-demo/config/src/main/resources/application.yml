@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+#          username: 1346735074@qq.com
+#          password: zhaoyao123/
+#          uri: https://github.com/1346735074/config-test.git
+          username: 1346735074@qq.com
+          password: 85208520.
+          uri: https://gitee.com/Spring_Cloud_Sell/config-test
+#          basedir: config-repo
+  rabbitmq:
+    host: 39.104.166.58
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

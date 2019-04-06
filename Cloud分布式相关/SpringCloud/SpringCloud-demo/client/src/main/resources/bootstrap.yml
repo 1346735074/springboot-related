@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: client
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: test
+    #消息队列分组
+    stream:
+      bindings:
+        orderMessage:
+          group: order
