@@ -1,0 +1,6 @@
+运行：没有相应的会提示下载
+docker run -d -p 6379:6379 redis:4.0.8
+
+
+#查询后台
+docker ps 

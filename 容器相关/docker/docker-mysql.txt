@@ -1,0 +1,26 @@
+docker run -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123123 -d mysql
+步骤：
+1、创建mysql的镜像,并运行。
+docker run --name mysql -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123123 -d mysql
+
+2.进入mysql的终端
+docker exec -it ac6c39b9ef30 mysql -uroot -p123123
+
+3.进入之后，要对用户进行授权，否则用navicat连接不上。
+use mysql
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123123';
+
+
+
+
+
+
+
+
+不设置第3部，navicat会报
+2059 - Authentication plugin 'caching sha2 password' cannot be loaded!
+
+
+下面这个没有用
+#GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY '123123';
+#GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123123';

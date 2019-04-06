@@ -1,0 +1,16 @@
+
+1.拉取Docker Hub里的镜像
+docker pull tomcat:7
+
+2.拉取完成后查看本地的镜像
+docker images #所有镜像
+
+
+3.运行tomcat镜像
+docker run -p 8080:8080 tomcat:7  #前台启动，关闭命令会关闭tomcat
+docker run -p 8080:8080 -d tomcat:7  #后台启动，用这个 会返回id
+
+
+
+访问
+ip:8080
