@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MoBaoAccount MessageType="UserMobilePay" PlatformID="b2ctest">
+    <OrderNo>M20150521084825</OrderNo>
+    <TradeAmt>5000.00</TradeAmt>
+    <Commission>0.5</Commission>
+    <User>
+        <Name>小明</Name>
+        <Phone>123456789</Phone>
+        <Age>12</Age>
+    </User>
+</MoBaoAccount>

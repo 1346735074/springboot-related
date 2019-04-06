@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transmission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="AmazonInternalTransportationMessaging.xsd"
+	sendingPartyID="AMAZON" receivingPartyID="CARRIERID"
+	transmissionCreationDate="2012-10-21T04:04:06Z"
+	transmissionSchemaVersionNumber="1.0">
+
+	<!-- 消息信息 -->
+	<message messageType="AMAZON_MFT">
+		
+		<!-- 亚马逊发货单 -->
+		<amazonManifest>
+			
+			<!-- 发货单头信息 -->
+			<manifestHeader>
+				
+				<!-- 发货库房 -->   
+				<warehouseLocationID>CAN1</warehouseLocationID>
+								
+				<!-- 配送公司id -->
+				<carrierInternalID>CARRIERID</carrierInternalID>
+								
+				<!-- 发货单号 -->
+				<manifestNumber>183906060</manifestNumber>
+				
+				<!-- 配送公司ID-->
+				<carrierAccountID>CARRIERID</carrierAccountID>
+				
+				<!-- 配送方发货单号 -->
+				<carrierManifestID />
+				
+				<!-- 发货时间,重要 -->
+				<shipmentDate>2012-10-15T01:10:25</shipmentDate>
+				
+				<!-- 货币代码 -->
+				<currencyCode>CNY</currencyCode>
+				
+				<!-- 出货地信息-->
+				<shipFromAddress AddressType="SHIP_FROM">
+					<name>JoyoAmazon</name>
+					<addressLine1>
+						B1-B2, No.1 Pu Bei Rd, North Kai C
+					</addressLine1>
+					<city>Huangpu</city>
+					<stateChoice>
+						<stateProvince>Guangzhou</stateProvince>
+					</stateChoice>
+					<zip>510530</zip>
+					<countryCode>CN</countryCode>
+					<countryName>China</countryName>
+				</shipFromAddress>
+
+			</manifestHeader>
+			
+			<!-- 发货单明细 -->
+			<manifestDetail>
+				
+				<!-- 发货条目明细(每个货品循环shipmentDetail) -->	   
+				<shipmentDetail>
+					
+					<!-- 委托方订单号,重要 -->
+					<customerOrderNumber>
+						C01-3593040-4702630
+					</customerOrderNumber>
+					
+					<!-- 收货人地址,重要 -->
+					<consigneeAddress AddressType="CONSIGNEE">
+						<name>蒋光华</name>
+						<addressLine1>
+							天河区 广州天河工业园建工路11号528
+						</addressLine1>
+						<addressLine2>艾云尼</addressLine2>
+						<district>天河区</district>
+						<city>广州市</city>
+						<stateChoice>
+							<stateProvince>广东</stateProvince>
+						</stateChoice>
+						<zip>510630</zip>
+						<countryCode>CN</countryCode>
+						<countryName>China</countryName>
+						<contactPhone>13751897518</contactPhone>
+						<contactEmail>wuchonming@126.com</contactEmail>
+						
+						<!-- 自提点id -->
+						<storeId>458383</storeId>
+					</consigneeAddress>
+					
+					<!-- 货品金额信息 -->
+					<shipmentCostInfo>
+						
+						<!-- 支付方式, Non-COD/非货到付款, MPos到付刷卡, Cash到付现金,重要 -->
+						<paymentMethod>Non-COD</paymentMethod>
+						
+						<!-- 货品金额信息 -->
+						<valueOfGoods>
+							<chargeOrAllowance>
+								CHARGE
+							</chargeOrAllowance>
+							<monetaryAmount currencyISOCode="CNY">
+								152.99
+							</monetaryAmount>
+						</valueOfGoods>
+						
+						<!-- 应收金额,货到付款金额,重要 -->
+						<CashOnDeliveryCharge>
+							<chargeOrAllowance>
+								CHARGE
+							</chargeOrAllowance>
+							<monetaryAmount currencyISOCode="CNY">
+								0.00
+							</monetaryAmount>
+						</CashOnDeliveryCharge>
+					</shipmentCostInfo>
+					<!-- 包裹信息 -->
+					<shipmentPackageInfo>
+						
+						<!-- 包裹盒信息 -->
+						<cartonID>
+							
+							<!-- 加密发货单号,重要-->
+							<encryptedShipmentID>
+								DWn2WvlvR
+							</encryptedShipmentID>
+							<packageID>1</packageID>
+							
+							<!-- 条码号,重要 -->
+							<trackingID>10311813527384</trackingID>
+						</cartonID>
+						
+						<!-- 包裹发货方法,Shipmethod,重要 -->
+						<packageShipmentMethod>
+							<amazonTechnicalName>
+								CARRIERSCAC_SPK_COD
+							</amazonTechnicalName>
+						</packageShipmentMethod>
+						
+						<!-- zone代码 -->
+						<shipZone>z01_CAN1</shipZone>
+						
+						<!-- sort代码 -->
+						<shipSort>0301</shipSort>
+						
+						<!-- 参考store id -->
+						<pointID>458383</pointID>
+						
+						<!-- 商业发票创建时间 -->     
+						<commercialInvoiceDate>
+							2012-10-14
+						</commercialInvoiceDate>
+						<!-- 预计送达时间,重要  -->
+						<scheduledDeliveryDate>
+							2012-10-15
+						</scheduledDeliveryDate>
+						
+						<!-- 货品重量,重要  -->
+						<shipmentPackageActualGrossWeight>
+							<weightValue unitOfMeasure="KG">
+								4.56
+							</weightValue>
+						</shipmentPackageActualGrossWeight>
+						
+						<!-- 包裹尺寸,重要 -->
+						<shipmentPackageDimensions>
+							<lengthValue unitOfMeasure="CM">
+								49.4
+							</lengthValue>
+							<heightValue unitOfMeasure="CM">
+								25.8
+							</heightValue>
+							<widthValue unitOfMeasure="CM">
+								32.6
+							</widthValue>
+						</shipmentPackageDimensions>
+						
+						<!-- 包裹条目信息 -->
+						<shipmentPackageItemDetail>
+							<!-- 条目订单号 -->
+							<OrderingOrderId>
+								C02-1133833-2453637
+							</OrderingOrderId>
+							<!-- 条目代码 -->
+							<itemID type="AMAZON_ASIN" isFreeRep="N">
+								B006CEWFME
+							</itemID>
+							<!-- 条目名称 -->
+							<itemTitle>
+								**********
+							</itemTitle>
+							<!-- 数量 -->
+							<itemQuantity>
+								<quantity unitOfMeasure="EA">
+									1
+								</quantity>
+							</itemQuantity>
+							<!-- 条目价格信息 -->
+							<itemPriceInfo>
+								<!-- 条目单位价格 -->
+								<itemUnitPrice>
+									<chargeOrAllowance>
+										CHARGE
+									</chargeOrAllowance>
+									<monetaryAmount
+										currencyISOCode="CNY">
+										152.99
+									</monetaryAmount>
+								</itemUnitPrice>
+								
+								<!-- 条目价格, 单价*数量 -->
+								<itemExtendedPrice>
+									<chargeOrAllowance>
+										CHARGE
+									</chargeOrAllowance>
+									<monetaryAmount
+										currencyISOCode="CNY">
+										152.99
+									</monetaryAmount>
+								</itemExtendedPrice>
+							</itemPriceInfo>	
+							<!-- 条目重量 -->
+							<itemWeight>
+								<weightValue unitOfMeasure="KG">
+									4.639953
+								</weightValue>
+							</itemWeight>		
+									
+							<!-- 管制分类-->
+							<harmonizedTariffDescription>
+								Baby Product Item
+							</harmonizedTariffDescription>
+							
+							<!-- 国家 -->
+							<countryOfOrigin>CN</countryOfOrigin>
+							
+							<!-- 换货标示,重要 -->
+							<ReplacementType>WarrantyReplacement</ReplacementType>
+							
+						</shipmentPackageItemDetail>
+						
+						<!-- 总金额 -->
+						<totalDeclaredValue currencyISOCode="CNY">
+							157.26
+						</totalDeclaredValue>	
+						<!-- 包裹描述 -->
+						<pkgHarmonizedTariffDescription>
+							Baby Product Item - New (count 1)
+						</pkgHarmonizedTariffDescription>
+						<!-- 包裹数量 -->
+						<shipmentPackageItemQuantity>
+							<quantity unitOfMeasure="EA">1</quantity>
+						</shipmentPackageItemQuantity>
+						<!-- 出口原因 -->
+					</shipmentPackageInfo>
+					
+					<!-- 顾客送货时间倾向 -->
+					<preferredDeliveryTime>
+						工作日、双休日或假日均可送货
+					</preferredDeliveryTime>
+
+					
+				</shipmentDetail>
+			</manifestDetail>
+			
+			<!-- 发货单汇总,可选 -->
+			<manifestSummary>
+				
+				<!-- 总数量 -->
+				<totalShipmentQuantity>
+					<quantity unitOfMeasure="EA">211</quantity>
+				</totalShipmentQuantity>
+				
+				<!-- 包裹总金额 -->
+				<totalShipmentValue>
+					<chargeOrAllowance>CHARGE</chargeOrAllowance>
+					<monetaryAmount currencyISOCode="CNY">
+						39600.37
+					</monetaryAmount>
+				</totalShipmentValue>
+				
+				<!-- 包裹声报重量信息 -->
+				<totalDeclaredGrossWeight>
+					<weightValue unitOfMeasure="KG">
+						210999.75
+					</weightValue>
+				</totalDeclaredGrossWeight>
+				
+				<!-- 包裹实际重量信息  -->
+				<totalActualGrossWeight>
+					<weightValue unitOfMeasure="KG">967.32</weightValue>
+				</totalActualGrossWeight>
+			</manifestSummary>
+		</amazonManifest>
+	</message>
+</transmission>

@@ -1,0 +1,15 @@
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+#  path: /ver/log/
+#  file: /ver/log/log.log
+
+
+# slf4j日志配置
+logging:
+  # 配置级别
+  level:
+    #分包配置级别，即不同的目录下可以使用不同的级别
+    com.example.demo.controller: trace
+  # 指定输出日志的文件名，默认输出至当前项目目录下
+  file: springboot.log
