@@ -64,6 +64,10 @@ public class LocalDateDemo {
         LocalDate firstDayOfNextMonth = lastDayOfThisMonth.plusDays(1);
         System.out.println(firstDayOfNextMonth);
 
+        // 取上一天：
+        LocalDate lastDayOfNextMonth = lastDayOfThisMonth.minusDays(1);
+        System.out.println(lastDayOfNextMonth);
+
         // 取2019年1月第一个周一：
         LocalDate firstMondayOf2017 = LocalDate.parse("2017-01-01").with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
         System.out.println(firstMondayOf2017);
