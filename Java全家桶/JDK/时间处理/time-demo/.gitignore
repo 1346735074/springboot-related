@@ -1,4 +1,4 @@
-/target/
+/Java全家桶/JDK/时间处理/time-demo/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -18,8 +18,8 @@
 
 ### NetBeans ###
 /nbproject/private/
-/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
+/build/
