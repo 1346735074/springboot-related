@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jifen.dao.OrderWesternListMapper">
+  <resultMap id="BaseResultMap" type="com.jifen.entity.OrderWesternList">
+    <id column="only_id" jdbcType="VARCHAR" property="onlyId" />
+    <result column="drug_id" jdbcType="INTEGER" property="drugId" />
+    <result column="drug_name" jdbcType="VARCHAR" property="drugName" />
+    <result column="specification" jdbcType="VARCHAR" property="specification" />
+    <result column="directions" jdbcType="VARCHAR" property="directions" />
+    <result column="dose" jdbcType="VARCHAR" property="dose" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="logogram" jdbcType="VARCHAR" property="logogram" />
+    <result column="days" jdbcType="INTEGER" property="days" />
+    <result column="gross" jdbcType="INTEGER" property="gross" />
+    <result column="sku_unit" jdbcType="VARCHAR" property="skuUnit" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="is_try" jdbcType="INTEGER" property="isTry" />
+    <result column="west_id" jdbcType="VARCHAR" property="westId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    only_id, drug_id, drug_name, specification, directions, dose, unit, logogram, days, 
+    gross, sku_unit, price, source, comment, is_try, west_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_western_list
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_western_list
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jifen.entity.OrderWesternList">
+    insert into order_western_list (only_id, drug_id, drug_name, 
+      specification, directions, dose, 
+      unit, logogram, days, 
+      gross, sku_unit, price, 
+      source, comment, is_try, 
+      west_id)
+    values (#{onlyId,jdbcType=VARCHAR}, #{drugId,jdbcType=INTEGER}, #{drugName,jdbcType=VARCHAR}, 
+      #{specification,jdbcType=VARCHAR}, #{directions,jdbcType=VARCHAR}, #{dose,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR}, #{logogram,jdbcType=VARCHAR}, #{days,jdbcType=INTEGER}, 
+      #{gross,jdbcType=INTEGER}, #{skuUnit,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{source,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, #{isTry,jdbcType=INTEGER}, 
+      #{westId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jifen.entity.OrderWesternList">
+    insert into order_western_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="onlyId != null">
+        only_id,
+      </if>
+      <if test="drugId != null">
+        drug_id,
+      </if>
+      <if test="drugName != null">
+        drug_name,
+      </if>
+      <if test="specification != null">
+        specification,
+      </if>
+      <if test="directions != null">
+        directions,
+      </if>
+      <if test="dose != null">
+        dose,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="logogram != null">
+        logogram,
+      </if>
+      <if test="days != null">
+        days,
+      </if>
+      <if test="gross != null">
+        gross,
+      </if>
+      <if test="skuUnit != null">
+        sku_unit,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="isTry != null">
+        is_try,
+      </if>
+      <if test="westId != null">
+        west_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="onlyId != null">
+        #{onlyId,jdbcType=VARCHAR},
+      </if>
+      <if test="drugId != null">
+        #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="drugName != null">
+        #{drugName,jdbcType=VARCHAR},
+      </if>
+      <if test="specification != null">
+        #{specification,jdbcType=VARCHAR},
+      </if>
+      <if test="directions != null">
+        #{directions,jdbcType=VARCHAR},
+      </if>
+      <if test="dose != null">
+        #{dose,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="logogram != null">
+        #{logogram,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=INTEGER},
+      </if>
+      <if test="gross != null">
+        #{gross,jdbcType=INTEGER},
+      </if>
+      <if test="skuUnit != null">
+        #{skuUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="isTry != null">
+        #{isTry,jdbcType=INTEGER},
+      </if>
+      <if test="westId != null">
+        #{westId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jifen.entity.OrderWesternList">
+    update order_western_list
+    <set>
+      <if test="drugId != null">
+        drug_id = #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="drugName != null">
+        drug_name = #{drugName,jdbcType=VARCHAR},
+      </if>
+      <if test="specification != null">
+        specification = #{specification,jdbcType=VARCHAR},
+      </if>
+      <if test="directions != null">
+        directions = #{directions,jdbcType=VARCHAR},
+      </if>
+      <if test="dose != null">
+        dose = #{dose,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="logogram != null">
+        logogram = #{logogram,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null">
+        days = #{days,jdbcType=INTEGER},
+      </if>
+      <if test="gross != null">
+        gross = #{gross,jdbcType=INTEGER},
+      </if>
+      <if test="skuUnit != null">
+        sku_unit = #{skuUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="isTry != null">
+        is_try = #{isTry,jdbcType=INTEGER},
+      </if>
+      <if test="westId != null">
+        west_id = #{westId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jifen.entity.OrderWesternList">
+    update order_western_list
+    set drug_id = #{drugId,jdbcType=INTEGER},
+      drug_name = #{drugName,jdbcType=VARCHAR},
+      specification = #{specification,jdbcType=VARCHAR},
+      directions = #{directions,jdbcType=VARCHAR},
+      dose = #{dose,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      logogram = #{logogram,jdbcType=VARCHAR},
+      days = #{days,jdbcType=INTEGER},
+      gross = #{gross,jdbcType=INTEGER},
+      sku_unit = #{skuUnit,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      source = #{source,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      is_try = #{isTry,jdbcType=INTEGER},
+      west_id = #{westId,jdbcType=VARCHAR}
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

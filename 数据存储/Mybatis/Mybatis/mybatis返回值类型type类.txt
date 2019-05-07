@@ -1,0 +1,6 @@
+Mybatis实战之自定义TypeHandler处理枚举
+https://www.cnblogs.com/dongying/p/6410889.html
+
+
+Mybatis文档
+http://www.mybatis.org/mybatis-3/zh/configuration.html#typeHandlers

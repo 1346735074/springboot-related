@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zto.dayun.mapper.TUserMapper">
+  <resultMap id="BaseResultMap" type="com.zto.dayun.entity.TUser">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="accountID" jdbcType="VARCHAR" property="accountid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="statusDef" jdbcType="VARCHAR" property="statusdef" />
+    <result column="statusOrdinal" property="statusordinal" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+    <result column="statusCustom" property="statuscustom" typeHandler="com.zto.dayun.handler.EnumStatusHandler"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, accountID, userName, statusDef, statusOrdinal,statusCustom
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zto.dayun.entity.TUser">
+    insert into t_user (id, accountID, userName, 
+      statusDef, statusOrdinal,statusCustom)
+    values (#{id,jdbcType=VARCHAR},
+      #{accountid,jdbcType=VARCHAR},
+      #{username,jdbcType=VARCHAR},
+      #{statusdef,jdbcType=VARCHAR},
+      #{statusordinal,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
+      #{statuscustom,typeHandler=com.zto.dayun.handler.EnumStatusHandler})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zto.dayun.entity.TUser">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountid != null">
+        accountID,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="statusdef != null">
+        statusDef,
+      </if>
+      <if test="statusordinal != null">
+        statusOrdinal,
+      </if>
+      <if test="statuscustom != null">
+        statusCustom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="statusdef != null">
+        #{statusdef,jdbcType=VARCHAR},
+      </if>
+      <if test="statusordinal != null">
+        #{statusordinal,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},
+      </if>
+      <if test="statuscustom != null">
+        #{statuscustom,typeHandler=com.zto.dayun.handler.EnumStatusHandler}
+      </if>
+    </trim>
+  </insert>
+</mapper>

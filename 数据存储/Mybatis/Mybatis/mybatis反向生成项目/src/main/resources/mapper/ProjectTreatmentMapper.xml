@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jifen.dao.ProjectTreatmentMapper">
+  <resultMap id="BaseResultMap" type="com.jifen.entity.ProjectTreatment">
+    <id column="only_id" jdbcType="VARCHAR" property="onlyId" />
+    <result column="course_number" jdbcType="VARCHAR" property="courseNumber" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="classify" jdbcType="INTEGER" property="classify" />
+    <result column="doctor" jdbcType="INTEGER" property="doctor" />
+    <result column="frequency" jdbcType="INTEGER" property="frequency" />
+    <result column="wubi_code" jdbcType="VARCHAR" property="wubiCode" />
+    <result column="alphabetic_code" jdbcType="VARCHAR" property="alphabeticCode" />
+    <result column="ceiling_price" jdbcType="DECIMAL" property="ceilingPrice" />
+    <result column="total_prices" jdbcType="DECIMAL" property="totalPrices" />
+    <result column="preferential_price" jdbcType="DECIMAL" property="preferentialPrice" />
+    <result column="deduct" jdbcType="DECIMAL" property="deduct" />
+    <result column="explaination" jdbcType="VARCHAR" property="explaination" />
+    <result column="is_open" jdbcType="INTEGER" property="isOpen" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    only_id, course_number, course_name, quantity, classify, doctor, frequency, wubi_code, 
+    alphabetic_code, ceiling_price, total_prices, preferential_price, deduct, explaination, 
+    is_open
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from project_treatment
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from project_treatment
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jifen.entity.ProjectTreatment">
+    insert into project_treatment (only_id, course_number, course_name, 
+      quantity, classify, doctor, 
+      frequency, wubi_code, alphabetic_code, 
+      ceiling_price, total_prices, preferential_price, 
+      deduct, explaination, is_open
+      )
+    values (#{onlyId,jdbcType=VARCHAR}, #{courseNumber,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, 
+      #{quantity,jdbcType=INTEGER}, #{classify,jdbcType=INTEGER}, #{doctor,jdbcType=INTEGER}, 
+      #{frequency,jdbcType=INTEGER}, #{wubiCode,jdbcType=VARCHAR}, #{alphabeticCode,jdbcType=VARCHAR}, 
+      #{ceilingPrice,jdbcType=DECIMAL}, #{totalPrices,jdbcType=DECIMAL}, #{preferentialPrice,jdbcType=DECIMAL}, 
+      #{deduct,jdbcType=DECIMAL}, #{explaination,jdbcType=VARCHAR}, #{isOpen,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jifen.entity.ProjectTreatment">
+    insert into project_treatment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="onlyId != null">
+        only_id,
+      </if>
+      <if test="courseNumber != null">
+        course_number,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="classify != null">
+        classify,
+      </if>
+      <if test="doctor != null">
+        doctor,
+      </if>
+      <if test="frequency != null">
+        frequency,
+      </if>
+      <if test="wubiCode != null">
+        wubi_code,
+      </if>
+      <if test="alphabeticCode != null">
+        alphabetic_code,
+      </if>
+      <if test="ceilingPrice != null">
+        ceiling_price,
+      </if>
+      <if test="totalPrices != null">
+        total_prices,
+      </if>
+      <if test="preferentialPrice != null">
+        preferential_price,
+      </if>
+      <if test="deduct != null">
+        deduct,
+      </if>
+      <if test="explaination != null">
+        explaination,
+      </if>
+      <if test="isOpen != null">
+        is_open,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="onlyId != null">
+        #{onlyId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseNumber != null">
+        #{courseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null">
+        #{classify,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null">
+        #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="frequency != null">
+        #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="wubiCode != null">
+        #{wubiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="alphabeticCode != null">
+        #{alphabeticCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ceilingPrice != null">
+        #{ceilingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrices != null">
+        #{totalPrices,jdbcType=DECIMAL},
+      </if>
+      <if test="preferentialPrice != null">
+        #{preferentialPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deduct != null">
+        #{deduct,jdbcType=DECIMAL},
+      </if>
+      <if test="explaination != null">
+        #{explaination,jdbcType=VARCHAR},
+      </if>
+      <if test="isOpen != null">
+        #{isOpen,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jifen.entity.ProjectTreatment">
+    update project_treatment
+    <set>
+      <if test="courseNumber != null">
+        course_number = #{courseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null">
+        classify = #{classify,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null">
+        doctor = #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="frequency != null">
+        frequency = #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="wubiCode != null">
+        wubi_code = #{wubiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="alphabeticCode != null">
+        alphabetic_code = #{alphabeticCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ceilingPrice != null">
+        ceiling_price = #{ceilingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrices != null">
+        total_prices = #{totalPrices,jdbcType=DECIMAL},
+      </if>
+      <if test="preferentialPrice != null">
+        preferential_price = #{preferentialPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deduct != null">
+        deduct = #{deduct,jdbcType=DECIMAL},
+      </if>
+      <if test="explaination != null">
+        explaination = #{explaination,jdbcType=VARCHAR},
+      </if>
+      <if test="isOpen != null">
+        is_open = #{isOpen,jdbcType=INTEGER},
+      </if>
+    </set>
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jifen.entity.ProjectTreatment">
+    update project_treatment
+    set course_number = #{courseNumber,jdbcType=VARCHAR},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=INTEGER},
+      classify = #{classify,jdbcType=INTEGER},
+      doctor = #{doctor,jdbcType=INTEGER},
+      frequency = #{frequency,jdbcType=INTEGER},
+      wubi_code = #{wubiCode,jdbcType=VARCHAR},
+      alphabetic_code = #{alphabeticCode,jdbcType=VARCHAR},
+      ceiling_price = #{ceilingPrice,jdbcType=DECIMAL},
+      total_prices = #{totalPrices,jdbcType=DECIMAL},
+      preferential_price = #{preferentialPrice,jdbcType=DECIMAL},
+      deduct = #{deduct,jdbcType=DECIMAL},
+      explaination = #{explaination,jdbcType=VARCHAR},
+      is_open = #{isOpen,jdbcType=INTEGER}
+    where only_id = #{onlyId,jdbcType=VARCHAR}
+  </update>
+</mapper>
