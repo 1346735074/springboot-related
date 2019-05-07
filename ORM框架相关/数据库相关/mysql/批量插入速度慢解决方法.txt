@@ -1,5 +1,0 @@
-jdbc:mysql://118.25.93.64:3306/fiy?
-
-characterEncoding=utf-8&amp;
-useSSL=false&amp;
-allowMultiQueries=true   #允许批量更新
