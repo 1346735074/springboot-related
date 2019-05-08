@@ -2,7 +2,7 @@
 # 拉取镜像
 # docker pull mongo:latest
 # 启动
-docker run -p 27017:27017 -v $PWD/db:/data/db --name mongodb -d mongo:latest
+docker run -p 9909:27017 -v $PWD/db:/data/db --name mongodb -d mongo:latest
 
 
 
