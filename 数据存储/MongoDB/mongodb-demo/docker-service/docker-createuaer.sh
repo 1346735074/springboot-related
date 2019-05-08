@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
-docker run  \
-    --name mongodb_server \
-    -p 27017:27017  \
-    -v $PWD/mysoft/mongodb/configdb:/data/configdb/ \
-    -v $PWD/mysoft/mongodb/db/:/data/db/ \
-    -d mongo --auth
-
-
 
 # 进入容器内部
-docker exec -it mongodb_server mongo admin
+#docker exec -it mongodb_server mongo admin
+#docker exec -i mongodb_server mongo admin
+#docker exec mongodb_server mongo admin
+#docker exec -t mongodb_server mongo admin
+#docker exec -i mongodb_server mongo admin
 
-
+docker exec -t mongodb_server mongo admin
+<<EOF
 # 创建管理员账号（拥有所有权限）
 db.createUser({
   user: 'root',
@@ -36,5 +33,14 @@ db.createUser({
 # 开启验证
 db.auth("huafeng","huafeng123456");
 
+#exit
+EOF
 
-exit
+
+# docker exec [选项] 容器 命令 [ARG...]
+
+# -d :分离模式: 在后台运行
+#
+# -i :即使没有附加也保持STDIN 打开
+#
+# -t :分配一个伪终端
