@@ -5,3 +5,5 @@ docker run  \
     -v $PWD/mysoft/mongodb/configdb:/data/configdb/ \
     -v $PWD/mysoft/mongodb/db/:/data/db/ \
     -d mongo --auth
+
+sleep 2s
