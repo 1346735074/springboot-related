@@ -14,8 +14,8 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-      - ./jar/sonar-pmd-plugin-3.0.1.jar:/opt/sonarqube/extensions/plugins/sonar-pmd-plugin-3.0.1.jar
-      - ./jar/sonar-l10n-zh-plugin-1.16.jar:/opt/sonarqube/extensions/plugins/sonar-l10n-zh-plugin-1.16.jar
+      - ./plugin/sonar-pmd-plugin-3.0.1.jar:/opt/sonarqube/extensions/plugins/sonar-pmd-plugin-3.0.1.jar
+      - ./plugin/sonar-l10n-zh-plugin-1.16.jar:/opt/sonarqube/extensions/plugins/sonar-l10n-zh-plugin-1.16.jar
 
   db:
     image: postgres
