@@ -20,7 +20,9 @@ import javax.annotation.Resource;
 @Configuration
 public class MyJobConfig {
 
-    // 自定义参数
+    /**
+     * 自定义参数
+     */
     private final String jobParameters = "parameter";
 
     @Resource

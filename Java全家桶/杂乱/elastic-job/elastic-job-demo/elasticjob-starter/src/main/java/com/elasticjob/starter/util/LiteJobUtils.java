@@ -11,6 +11,16 @@ import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
  */
 public class LiteJobUtils {
 
+    /**
+     * 获取 {@link LiteJobConfiguration} 对象
+     *
+     * @param jobClass               定时器实现类
+     * @param cron                   定时参数
+     * @param shardingTotalCount     作业分片总数
+     * @param shardingItemParameters 当前参数
+     * @param jobParameters          作业自定义参数
+     * @return {@link LiteJobConfiguration}
+     */
     public static LiteJobConfiguration getLiteJobConfiguration(final Class<? extends SimpleJob> jobClass,
                                                                final String cron,
                                                                final int shardingTotalCount,
