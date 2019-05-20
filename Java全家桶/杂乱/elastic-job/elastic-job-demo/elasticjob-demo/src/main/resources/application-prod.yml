@@ -11,3 +11,6 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: Rtqw123OpnmER
+    regCenter:
+      serverList: 10.1.1.97:2181
+      namespace: elasticJobDemo
