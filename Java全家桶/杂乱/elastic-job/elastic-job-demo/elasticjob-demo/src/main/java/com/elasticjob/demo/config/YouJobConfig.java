@@ -1,4 +1,4 @@
-//package com.example.elasticjobdemo.config;
+package com.elasticjob.demo.config;
 //
 //import com.dangdang.ddframe.job.lite.api.JobScheduler;
 //import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;

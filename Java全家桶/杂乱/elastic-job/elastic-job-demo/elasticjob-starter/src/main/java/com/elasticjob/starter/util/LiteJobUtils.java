@@ -1,4 +1,4 @@
-package com.example.elasticjobdemo.util;
+package com.elasticjob.starter.util;
 
 import com.dangdang.ddframe.job.api.simple.SimpleJob;
 import com.dangdang.ddframe.job.config.JobCoreConfiguration;

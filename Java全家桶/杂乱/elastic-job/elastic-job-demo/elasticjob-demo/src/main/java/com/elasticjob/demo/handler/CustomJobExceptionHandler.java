@@ -1,4 +1,4 @@
-package com.example.elasticjobdemo.handler;
+package com.elasticjob.demo.handler;
 
 import com.dangdang.ddframe.job.executor.handler.JobExceptionHandler;
 import lombok.extern.slf4j.Slf4j;

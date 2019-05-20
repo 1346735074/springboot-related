@@ -1,4 +1,4 @@
-package com.example.elasticjobdemo.config;
+package com.elasticjob.starter;
 
 import com.dangdang.ddframe.job.event.JobEventConfiguration;
 import com.dangdang.ddframe.job.event.rdb.JobEventRdbConfiguration;
@@ -13,7 +13,7 @@ import javax.sql.DataSource;
  * @since 1.0
  */
 @Configuration
-public class JobEventConfig {
+public class JobEventAutoConfiguration {
 
     @Resource
     private DataSource dataSource;

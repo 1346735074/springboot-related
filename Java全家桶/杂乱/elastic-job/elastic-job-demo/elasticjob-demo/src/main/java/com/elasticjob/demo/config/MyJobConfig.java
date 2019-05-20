@@ -1,12 +1,12 @@
-package com.example.elasticjobdemo.config;
+package com.elasticjob.demo.config;
 
 import com.dangdang.ddframe.job.event.JobEventConfiguration;
 import com.dangdang.ddframe.job.lite.api.JobScheduler;
 import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
 import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;
 import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
-import com.example.elasticjobdemo.scheduled.MySimpleJob;
-import com.example.elasticjobdemo.util.LiteJobUtils;
+import com.elasticjob.demo.scheduled.MySimpleJob;
+import com.elasticjob.starter.util.LiteJobUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

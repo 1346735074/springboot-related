@@ -1,4 +1,4 @@
-package com.example.elasticjobdemo.scheduled;
+package com.elasticjob.demo.scheduled;
 
 import com.dangdang.ddframe.job.api.ShardingContext;
 import com.dangdang.ddframe.job.api.simple.SimpleJob;
