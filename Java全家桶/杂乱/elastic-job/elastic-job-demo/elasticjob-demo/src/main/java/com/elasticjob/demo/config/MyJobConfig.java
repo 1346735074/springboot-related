@@ -31,11 +31,12 @@ public class MyJobConfig {
 
     @Bean(initMethod = "init")
     public JobScheduler mySimpleJobScheduler(final MySimpleJob mySimpleJob,
-                                             @Value("${simpleJob.cron}") final String cron,
-                                             @Value("${simpleJob.shardingTotalCount}") final int shardingTotalCount,
-                                             @Value("${simpleJob.shardingItemParameters}") final String shardingItemParameters) {
+                                             @Value("${myJob.cron}") final String cron,
+                                             @Value("${myJob.shardingTotalCount}") final int shardingTotalCount,
+                                             @Value("${myJob.shardingItemParameters}") final String shardingItemParameters) {
 
-        LiteJobConfiguration liteJobConfiguration = LiteJobUtils.getLiteJobConfiguration(mySimpleJob.getClass(), cron, shardingTotalCount, shardingItemParameters, jobParameters);
+        LiteJobConfiguration liteJobConfiguration = LiteJobUtils.getLiteJobConfiguration(mySimpleJob.getClass(), cron,
+                shardingTotalCount, shardingItemParameters, jobParameters);
         return new SpringJobScheduler(mySimpleJob, regCenter, liteJobConfiguration, jobEventConfiguration);
     }
 
