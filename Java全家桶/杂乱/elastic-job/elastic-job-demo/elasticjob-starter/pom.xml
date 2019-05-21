@@ -38,11 +38,13 @@
         <!-- elastic-job -->
         <dependency>
             <groupId>com.dangdang</groupId>
-            <artifactId>elastic-job-lite-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.dangdang</groupId>
             <artifactId>elastic-job-lite-spring</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.12.0</version>
         </dependency>
 
         <dependency>

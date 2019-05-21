@@ -29,7 +29,7 @@ public class YouJobConfig {
                                            @Value("${youJob.shardingItemParameters}") final String shardingItemParameters) {
 
         LiteJobConfiguration liteJobConfiguration = LiteJobUtils.getLiteJobConfiguration(youSimpleJob.getClass(), cron,
-                shardingTotalCount, shardingItemParameters, null);
+                shardingTotalCount, null, null);
         return new SpringJobScheduler(youSimpleJob, regCenter, liteJobConfiguration);
     }
 
