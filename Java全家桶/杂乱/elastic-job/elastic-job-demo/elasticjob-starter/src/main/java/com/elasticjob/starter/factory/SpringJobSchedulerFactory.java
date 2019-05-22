@@ -9,6 +9,8 @@ import com.elasticjob.starter.ElasticJobProperties;
 import com.elasticjob.starter.util.ElasticJobUtils;
 
 /**
+ * {@link SpringJobScheduler} 构建
+ *
  * @author purgeyao
  * @since 1.0
  */
