@@ -19,6 +19,14 @@ import javax.annotation.Resource;
 @Configuration
 public class YouJobConfig {
 
+    private static final String CRON = "0 0/1 * * * ?";
+
+    private static final int SHARDING_TOTAL_COUNT = 1;
+
+    private static final String SHARDING_ITEM_PARAMETERS = null;
+
+    private static final String JOB_PARAMETERS = null;
+
     @Resource
     private ZookeeperRegistryCenter regCenter;
 

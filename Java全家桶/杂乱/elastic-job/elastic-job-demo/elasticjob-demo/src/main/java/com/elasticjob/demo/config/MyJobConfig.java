@@ -20,10 +20,13 @@ import javax.annotation.Resource;
 @Configuration
 public class MyJobConfig {
 
-    /**
-     * 自定义参数
-     */
-    private final String jobParameters = "parameter";
+    private static final String CRON = "0 0/1 * * * ?";
+
+    private static final int SHARDING_TOTAL_COUNT = 1;
+
+    private static final String SHARDING_ITEM_PARAMETERS = null;
+
+    private static final String JOB_PARAMETERS = "parameter";
 
     @Resource
     private ZookeeperRegistryCenter regCenter;
@@ -38,7 +41,7 @@ public class MyJobConfig {
                                              @Value("${myJob.shardingItemParameters}") final String shardingItemParameters) {
 
         LiteJobConfiguration liteJobConfiguration = LiteJobUtils.getLiteJobConfiguration(mySimpleJob.getClass(), cron,
-                shardingTotalCount, shardingItemParameters, jobParameters);
+                shardingTotalCount, shardingItemParameters, JOB_PARAMETERS);
         return new SpringJobScheduler(mySimpleJob, regCenter, liteJobConfiguration, jobEventConfiguration);
     }
 
