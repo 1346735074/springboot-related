@@ -18,8 +18,8 @@ public class ElasticJobUtils {
      * @param jobName                定时器名称
      * @param cron                   定时参数
      * @param shardingTotalCount     作业分片总数
-     * @param shardingItemParameters 当前参数
-     * @param jobParameters          作业自定义参数
+     * @param shardingItemParameters 当前参数 可以为null
+     * @param jobParameters          作业自定义参数 可以为null
      * @return {@link LiteJobConfiguration}
      */
     public static LiteJobConfiguration getLiteJobConfiguration(final Class<? extends SimpleJob> jobClass,

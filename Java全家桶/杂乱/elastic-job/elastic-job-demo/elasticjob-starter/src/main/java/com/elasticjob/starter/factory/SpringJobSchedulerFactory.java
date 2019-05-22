@@ -43,6 +43,10 @@ public class SpringJobSchedulerFactory {
 
         ElasticJobProperties.JobConfig jobConfig = elasticJobProperties.getJopMap().get(jobName);
 
+        if (jobConfig == null) {
+            throw new NullPointerException(String.format("%s 定时器配置为null", jobName));
+        }
+
         LiteJobConfiguration liteJobConfiguration = ElasticJobUtils
                 .getLiteJobConfiguration(simpleJob.getClass(), jobConfig.getJobName(),
                         jobConfig.getCron(), jobConfig.getShardingTotalCount(),
