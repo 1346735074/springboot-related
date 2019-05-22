@@ -5,7 +5,7 @@ import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
 import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;
 import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
 import com.elasticjob.demo.scheduled.YouSimpleJob;
-import com.elasticjob.starter.util.LiteJobUtils;
+import com.elasticjob.starter.util.ElasticJobUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +18,8 @@ import javax.annotation.Resource;
  */
 @Configuration
 public class YouJobConfig {
+
+    private static final String JOB_NAME = "youSimpleJob";
 
     private static final String CRON = "0 0/1 * * * ?";
 
@@ -36,7 +38,8 @@ public class YouJobConfig {
                                            @Value("${youJob.shardingTotalCount}") final int shardingTotalCount,
                                            @Value("${youJob.shardingItemParameters}") final String shardingItemParameters) {
 
-        LiteJobConfiguration liteJobConfiguration = LiteJobUtils.getLiteJobConfiguration(youSimpleJob.getClass(), cron,
+        LiteJobConfiguration liteJobConfiguration = ElasticJobUtils
+            .getLiteJobConfiguration(youSimpleJob.getClass(), JOB_NAME, cron,
                 shardingTotalCount, null, null);
         return new SpringJobScheduler(youSimpleJob, regCenter, liteJobConfiguration);
     }

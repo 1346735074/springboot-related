@@ -14,3 +14,23 @@ spring:
     regCenter:
       serverList: 10.1.1.97:2181
       namespace: elasticJobDemo
+    scheduled:
+      jopMap:
+        myJobConfig:
+          jobName: myJob
+          cron: 123
+          shardingTotalCount: 1
+          shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+          jobParameters: 1
+        youJobConfig:
+          jobName: myJob
+          cron: 123
+          shardingTotalCount: 1
+          shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+          jobParameters: 1
+        PropertiesSimpleJob:
+          jobName: PropertiesSimpleJob
+          cron: 0 0/1 * * * ?
+          shardingTotalCount: 1
+          shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+          jobParameters: test
