@@ -1,15 +1,22 @@
 package com.elasticjob.starter.util;
 
-import com.dangdang.ddframe.job.api.simple.SimpleJob;
+import com.dangdang.ddframe.job.api.ElasticJob;
 import com.dangdang.ddframe.job.config.JobCoreConfiguration;
 import com.dangdang.ddframe.job.config.simple.SimpleJobConfiguration;
 import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
+ * {@link ElasticJob} 工具类
+ *
  * @author purgeyao
  * @since 1.0
  */
 public class ElasticJobUtils {
+
+    private static List<String> jobTypeNameList = Arrays.asList("SimpleJob", "DataflowJob", "ScriptJob");
 
     /**
      * 获取 {@link LiteJobConfiguration} 对象
@@ -22,12 +29,21 @@ public class ElasticJobUtils {
      * @param jobParameters          作业自定义参数 可以为null
      * @return {@link LiteJobConfiguration}
      */
-    public static LiteJobConfiguration getLiteJobConfiguration(final Class<? extends SimpleJob> jobClass,
+    @SuppressWarnings("all")
+    public static LiteJobConfiguration getLiteJobConfiguration(Class<? extends ElasticJob> jobClass,
                                                                final String jobName,
                                                                final String cron,
                                                                final int shardingTotalCount,
                                                                final String shardingItemParameters,
                                                                final String jobParameters) {
+
+        // 解决CGLIB代理问题
+        String jobTypeName = jobClass.getInterfaces()[0].getSimpleName();
+        if (!jobTypeNameList.contains(jobTypeName)) {
+            jobTypeName = jobClass.getSuperclass().getInterfaces()[0].getSimpleName();
+            jobClass = (Class<? extends ElasticJob>) jobClass.getSuperclass();
+        }
+
         // 定义作业核心配置
         JobCoreConfiguration simpleCoreConfig = JobCoreConfiguration
                 .newBuilder(jobName, cron, shardingTotalCount)
