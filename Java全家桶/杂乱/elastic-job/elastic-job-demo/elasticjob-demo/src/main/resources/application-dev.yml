@@ -8,7 +8,7 @@ spring:
   elasticjob:
     datasource:
       url: jdbc:mysql://10.1.1.97:3311/batch_log?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: Rtqw123OpnmER
     regCenter:
@@ -17,13 +17,13 @@ spring:
     scheduled:
       jopMap:
         myJobConfig:
-          jobName: myJob
+          jobName: myJobConfig
           cron: 123
           shardingTotalCount: 1
           shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
           jobParameters: 1
         youJobConfig:
-          jobName: myJob
+          jobName: youJobConfig
           cron: 123
           shardingTotalCount: 1
           shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou

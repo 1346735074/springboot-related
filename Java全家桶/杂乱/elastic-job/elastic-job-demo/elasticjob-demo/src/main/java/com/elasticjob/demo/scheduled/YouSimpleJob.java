@@ -25,5 +25,6 @@ public class YouSimpleJob implements SimpleJob {
                 shardingContext.getJobName(),
                 shardingContext.getJobParameter()
         ));
+        throw new RuntimeException("测试错误");
     }
 }
