@@ -7,12 +7,14 @@ spring:
 
   elasticjob:
     datasource:
-      url: jdbc:mysql://rm-wz9103hxfjd22t1j2.mysql.rds.aliyuncs.com:3306/elasticjob_log?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
-      driver-class-name: com.mysql.jdbc.Driver
-      username: quixmart
-      password: qx#dp0810
+      url: jdbc:mysql://10.1.1.97:3311/batch_log?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: Rtqw123OpnmER
     regCenter:
-      serverList: 10.107.139.125:2181,10.110.112.195:2181,10.103.118.234:2181
+      serverList: 10.1.1.97:2181
+      # test
+#      serverList: 10.96.204.0:2181,10.97.158.68:2181,10.100.102.218:2181
       namespace: elasticJobDemo
     scheduled:
       jopMap:
