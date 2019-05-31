@@ -7,7 +7,7 @@ spring:
 
   elasticjob:
     datasource:
-      url: jdbc:mysql://10.1.1.97:3311/batch_log?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
+      url: jdbc:mysql://10.1.1.97:3311/batch_log_native?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: Rtqw123OpnmER

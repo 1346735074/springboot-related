@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * @author purgeyao
  * @since 1.0
  */
-@Configuration
+//@Configuration
 public class MyJobConfig {
 
     private static final String JOB_NAME = "MySimpleJob";

@@ -1,5 +1,6 @@
 package com.elasticjob.demo.config;
 
+import com.dangdang.ddframe.job.event.JobEventConfiguration;
 import com.dangdang.ddframe.job.lite.api.JobScheduler;
 import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
 import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;
@@ -32,16 +33,19 @@ public class YouJobConfig {
     @Resource
     private ZookeeperRegistryCenter regCenter;
 
+    @Resource
+    private JobEventConfiguration jobEventConfiguration;
+
     @Bean(initMethod = "init")
     public JobScheduler youSimpleJobScheduler(final YouSimpleJob youSimpleJob,
-                                           @Value("${youJob.cron}") final String cron,
-                                           @Value("${youJob.shardingTotalCount}") final int shardingTotalCount,
-                                           @Value("${youJob.shardingItemParameters}") final String shardingItemParameters) {
+                                              @Value("${youJob.cron}") final String cron,
+                                              @Value("${youJob.shardingTotalCount}") final int shardingTotalCount,
+                                              @Value("${youJob.shardingItemParameters}") final String shardingItemParameters) {
 
         LiteJobConfiguration liteJobConfiguration = ElasticJobUtils
-            .getLiteJobConfiguration(youSimpleJob.getClass(), JOB_NAME, cron,
-                shardingTotalCount, null, null);
-        return new SpringJobScheduler(youSimpleJob, regCenter, liteJobConfiguration);
+                .getLiteJobConfiguration(youSimpleJob.getClass(), JOB_NAME, cron,
+                        shardingTotalCount, null, null);
+        return new SpringJobScheduler(youSimpleJob, regCenter, liteJobConfiguration, jobEventConfiguration);
     }
 
 }
