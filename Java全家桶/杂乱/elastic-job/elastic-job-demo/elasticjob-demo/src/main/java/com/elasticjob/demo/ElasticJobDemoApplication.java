@@ -2,6 +2,7 @@ package com.elasticjob.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author purgeyao
@@ -11,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ElasticJobDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ElasticJobDemoApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(ElasticJobDemoApplication.class, args);
     }
 
 }

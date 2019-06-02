@@ -1,6 +1,8 @@
 package com.elasticjob.starter;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -22,6 +24,8 @@ public class ElasticJobProperties {
 
     @Data
     @ToString
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class JobConfig{
 
         private String jobName;
@@ -33,5 +37,7 @@ public class ElasticJobProperties {
         private String shardingItemParameters;
 
         private String jobParameters;
+
+        private Boolean isEvent;
     }
 }

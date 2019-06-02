@@ -1,59 +1,61 @@
 package com.elasticjob.starter.parser;
 
-import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
-import com.elasticjob.starter.annotation.ElasticJobConfig;
+import com.dangdang.ddframe.job.api.simple.SimpleJob;
+import com.dangdang.ddframe.job.lite.api.JobScheduler;
+import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;
+import com.elasticjob.starter.ElasticJobProperties;
+import com.elasticjob.starter.annotation.ElasticJobScheduler;
+import com.elasticjob.starter.factory.SpringJobSchedulerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.core.env.Environment;
 
-import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 /**
+ * {@link JobScheduler} registered
+ *
  * @author purgeyao
  * @since 1.0
  */
 @Slf4j
 public class JobConfParser implements ApplicationContextAware {
 
-    private Environment environment;
+    private SpringJobSchedulerFactory springJobSchedulerFactory;
 
-    @Resource
-    private ZookeeperRegistryCenter zookeeperRegistryCenter;
-
-    private List<String> jobTypeNameList = Arrays.asList("SimpleJob", "DataflowJob", "ScriptJob");
+    public JobConfParser(SpringJobSchedulerFactory springJobSchedulerFactory) {
+        this.springJobSchedulerFactory = springJobSchedulerFactory;
+    }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        environment = applicationContext.getEnvironment();
 
-        Map<String, Object> beanMap = applicationContext.getBeansWithAnnotation(ElasticJobConfig.class);
-        beanMap.forEach((k, confBean) -> {
-            Class<?> clz = confBean.getClass();
-            // 解决CGLIB代理问题
-            String jobTypeName = clz.getInterfaces()[0].getSimpleName();
-            if (!jobTypeNameList.contains(jobTypeName)) {
-                jobTypeName = clz.getSuperclass().getInterfaces()[0].getSimpleName();
-                clz = clz.getSuperclass();
-            }
+        Map<String, Object> beanMap = applicationContext.getBeansWithAnnotation(ElasticJobScheduler.class);
+        beanMap.forEach((className, confBean) -> {
 
-            ElasticJobConfig conf = AnnotationUtils.findAnnotation(clz, ElasticJobConfig.class);
+            // 获取注解信息组装配置
+            Class<?> jobClass = confBean.getClass();
+            ElasticJobScheduler config = AnnotationUtils.findAnnotation(jobClass, ElasticJobScheduler.class);
+            ElasticJobProperties.JobConfig jobConfig = createJobConfig(config);
 
-
-            // 获取注解信息
-            // 构建JobCoreConfiguration对象
-//            LiteJobConfiguration liteJobConfiguration = ElasticJobUtils
-//                    .getLiteJobConfiguration(confBean.getClass(), "", "",
-//                            "", "", "");
-
-            // 不同类型的任务配置处理
-
+            // 构建SpringJobScheduler对象
+            SpringJobScheduler springJobScheduler = springJobSchedulerFactory.getSpringJobScheduler((SimpleJob) confBean, jobConfig);
+            springJobScheduler.init();
+            log.info("JobScheduler:{} registered successfully", jobConfig.getJobName());
         });
 
+    }
+
+    private static ElasticJobProperties.JobConfig createJobConfig(ElasticJobScheduler config) {
+
+        return new ElasticJobProperties.JobConfig(
+                config.name(), config.cron(), config.shardingTotalCount(),
+                config.shardingItemParameters(), config.jobParameters(),
+                config.isEvent()
+        );
     }
 }

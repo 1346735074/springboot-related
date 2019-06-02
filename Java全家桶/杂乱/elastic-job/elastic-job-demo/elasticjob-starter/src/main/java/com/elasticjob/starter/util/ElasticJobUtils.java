@@ -1,6 +1,7 @@
 package com.elasticjob.starter.util;
 
 import com.dangdang.ddframe.job.api.ElasticJob;
+import com.dangdang.ddframe.job.api.simple.SimpleJob;
 import com.dangdang.ddframe.job.config.JobCoreConfiguration;
 import com.dangdang.ddframe.job.config.simple.SimpleJobConfiguration;
 import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
@@ -30,7 +31,7 @@ public class ElasticJobUtils {
      * @return {@link LiteJobConfiguration}
      */
     @SuppressWarnings("all")
-    public static LiteJobConfiguration getLiteJobConfiguration(Class<? extends ElasticJob> jobClass,
+    public static LiteJobConfiguration getLiteJobConfiguration(Class<? extends SimpleJob> jobClass,
                                                                final String jobName,
                                                                final String cron,
                                                                final int shardingTotalCount,
@@ -40,8 +41,8 @@ public class ElasticJobUtils {
         // 解决CGLIB代理问题
         String jobTypeName = jobClass.getInterfaces()[0].getSimpleName();
         if (!jobTypeNameList.contains(jobTypeName)) {
-            jobTypeName = jobClass.getSuperclass().getInterfaces()[0].getSimpleName();
-            jobClass = (Class<? extends ElasticJob>) jobClass.getSuperclass();
+            // jobTypeName = jobClass.getSuperclass().getInterfaces()[0].getSimpleName();
+            jobClass = (Class<? extends SimpleJob>) jobClass.getSuperclass();
         }
 
         // 定义作业核心配置

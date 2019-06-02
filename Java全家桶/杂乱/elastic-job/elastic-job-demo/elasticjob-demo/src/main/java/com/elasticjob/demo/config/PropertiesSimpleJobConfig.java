@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * @author purgeyao
  * @since 1.0
  */
-@Configuration
+//@Configuration
 public class PropertiesSimpleJobConfig {
 
     @Resource
@@ -20,7 +20,7 @@ public class PropertiesSimpleJobConfig {
 
     @Bean(initMethod = "init")
     public JobScheduler propertiesSimpleJobScheduler(final PropertiesSimpleJob job) {
-        return springJobSchedulerFactory.gerSpringJobScheduler(job,"PropertiesSimpleJob", true);
+        return springJobSchedulerFactory.getSpringJobScheduler(job,"PropertiesSimpleJob", true);
     }
 
 }

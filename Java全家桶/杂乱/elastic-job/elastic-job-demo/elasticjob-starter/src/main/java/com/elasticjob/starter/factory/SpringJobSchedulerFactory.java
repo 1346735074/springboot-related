@@ -39,9 +39,27 @@ public class SpringJobSchedulerFactory {
      * @param isEvent   是否开启历史轨迹
      * @return SpringJobScheduler
      */
-    public SpringJobScheduler gerSpringJobScheduler(SimpleJob simpleJob, String jobName, Boolean isEvent) {
+    public SpringJobScheduler getSpringJobScheduler(SimpleJob simpleJob, String jobName, Boolean isEvent) {
 
         ElasticJobProperties.JobConfig jobConfig = elasticJobProperties.getJopMap().get(jobName);
+        jobConfig.setIsEvent(isEvent);
+
+        return createSpringJobScheduler(simpleJob, jobConfig, jobName);
+    }
+
+    /**
+     * 获取{@link SpringJobScheduler} 对象 注解方式
+     *
+     * @param jobConfig 定时器配置
+     * @return SpringJobScheduler
+     */
+    public SpringJobScheduler getSpringJobScheduler(SimpleJob simpleJob, ElasticJobProperties.JobConfig jobConfig) {
+
+        return createSpringJobScheduler(simpleJob, jobConfig, jobConfig.getJobName());
+    }
+
+
+    private SpringJobScheduler createSpringJobScheduler(SimpleJob simpleJob, ElasticJobProperties.JobConfig jobConfig, String jobName) {
 
         if (jobConfig == null) {
             throw new NullPointerException(String.format("%s 定时器配置为null", jobName));
@@ -52,7 +70,7 @@ public class SpringJobSchedulerFactory {
                         jobConfig.getCron(), jobConfig.getShardingTotalCount(),
                         jobConfig.getShardingItemParameters(), jobConfig.getJobParameters());
 
-        if (isEvent) {
+        if (jobConfig.getIsEvent()) {
             return new SpringJobScheduler(simpleJob, regCenter, liteJobConfiguration, jobEventConfiguration);
         }
         return new SpringJobScheduler(simpleJob, regCenter, liteJobConfiguration);

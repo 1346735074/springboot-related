@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Elasticjob Metadata Endpoints Auto-{@link Configuration}
+ * ZookeeperRegistryCenter Metadata Endpoints Auto-{@link Configuration}
  *
  * @author purgeyao
  * @since 1.0
@@ -22,7 +22,5 @@ public class JobRegistryCenterAutoConfiguration {
                                              @Value("${spring.elasticjob.regCenter.namespace}") final String namespace) {
         return new ZookeeperRegistryCenter(new ZookeeperConfiguration(serverList, namespace));
     }
-
-
 
 }

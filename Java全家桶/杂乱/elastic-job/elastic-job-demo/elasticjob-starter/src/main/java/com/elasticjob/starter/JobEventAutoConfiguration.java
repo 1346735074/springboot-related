@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * JobEventConfiguration Metadata Endpoints Auto-{@link Configuration}
+ *
  * @author purgeyao
  * @since 1.0
  */
