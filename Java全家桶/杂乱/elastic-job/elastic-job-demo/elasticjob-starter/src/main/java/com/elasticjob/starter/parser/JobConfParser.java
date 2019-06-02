@@ -8,8 +8,6 @@ import com.elasticjob.starter.annotation.ElasticJobScheduler;
 import com.elasticjob.starter.factory.SpringJobSchedulerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.annotation.AnnotationUtils;
