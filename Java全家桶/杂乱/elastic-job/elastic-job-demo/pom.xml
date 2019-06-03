@@ -16,10 +16,10 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>elastic-job-demo</artifactId>
+    <artifactId>elastic-job-spring-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>elastic-job-demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>elastic-job-spring-boot</name>
+    <description>elastic-job-spring-boot</description>
 
     <properties>
         <java.version>1.8</java.version>
