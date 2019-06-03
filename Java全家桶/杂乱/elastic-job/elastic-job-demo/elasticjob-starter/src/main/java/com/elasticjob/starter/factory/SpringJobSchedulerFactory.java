@@ -41,7 +41,7 @@ public class SpringJobSchedulerFactory {
      */
     public SpringJobScheduler getSpringJobScheduler(SimpleJob simpleJob, String jobName, Boolean isEvent) {
 
-        ElasticJobProperties.JobConfig jobConfig = elasticJobProperties.getJopMap().get(jobName);
+        ElasticJobProperties.JobConfig jobConfig = elasticJobProperties.getJobConfigMap().get(jobName);
         jobConfig.setIsEvent(isEvent);
 
         return createSpringJobScheduler(simpleJob, jobConfig, jobName);

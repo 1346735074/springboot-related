@@ -15,7 +15,7 @@ spring:
       serverList: 10.100.156.148:2181,10.103.132.177:2181,10.98.196.36:2181
       namespace: elasticJobDemo
     scheduled:
-      jopMap:
+      jobConfigMap:
         myJobConfig:
           jobName: myJob
           cron: 123

@@ -20,7 +20,7 @@ public class ElasticJobProperties {
 
     public static final String PREFIX = "spring.elasticjob.scheduled";
 
-    private Map<String, JobConfig> jopMap = new HashMap<>();
+    private Map<String, JobConfig> jobConfigMap = new HashMap<>();
 
     @Data
     @ToString
