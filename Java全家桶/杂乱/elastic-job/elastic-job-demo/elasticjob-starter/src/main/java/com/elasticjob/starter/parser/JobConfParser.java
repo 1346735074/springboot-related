@@ -51,9 +51,9 @@ public class JobConfParser implements ApplicationContextAware {
     private static ElasticJobProperties.JobConfig createJobConfig(ElasticJobScheduler config) {
 
         return new ElasticJobProperties.JobConfig(
-                config.name(), config.cron(), config.shardingTotalCount(),
-                config.shardingItemParameters(), config.jobParameters(),
-                config.isEvent()
+                config.name(), config.cron(),
+                config.shardingTotalCount(), config.shardingItemParameters(),
+                config.jobParameters(), config.isEvent()
         );
     }
 }
