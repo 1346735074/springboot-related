@@ -8,6 +8,7 @@ import com.elasticjob.starter.annotation.ElasticJobScheduler;
 import com.elasticjob.starter.factory.SpringJobSchedulerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -30,17 +31,20 @@ public class JobConfParser implements ApplicationContextAware {
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(ApplicationContext applicationContext) {
 
         Map<String, Object> beanMap = applicationContext.getBeansWithAnnotation(ElasticJobScheduler.class);
         beanMap.forEach((className, confBean) -> {
 
             // 获取注解信息组装配置
             Class<?> jobClass = confBean.getClass();
+            if (!SimpleJob.class.isAssignableFrom(jobClass)) {
+                throw new BeanCreationException(String.format("[JobConfParser] %s 初始化异常 请实现 %s", jobClass, SimpleJob.class));
+            }
             ElasticJobScheduler config = AnnotationUtils.findAnnotation(jobClass, ElasticJobScheduler.class);
             ElasticJobProperties.JobConfig jobConfig = createJobConfig(config);
 
-            // 构建SpringJobScheduler对象
+            // 构建SpringJobScheduler对象初始化
             SpringJobScheduler springJobScheduler = springJobSchedulerFactory.getSpringJobScheduler((SimpleJob) confBean, jobConfig);
             springJobScheduler.init();
             log.info("JobScheduler:{} registered successfully", jobConfig.getJobName());

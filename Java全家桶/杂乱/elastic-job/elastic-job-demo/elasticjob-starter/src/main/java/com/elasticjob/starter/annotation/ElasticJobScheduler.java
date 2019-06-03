@@ -8,6 +8,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * job 启动初始化 {@link @interface}
+ *
  * @author purgeyao
  * @since 1.0
  */
