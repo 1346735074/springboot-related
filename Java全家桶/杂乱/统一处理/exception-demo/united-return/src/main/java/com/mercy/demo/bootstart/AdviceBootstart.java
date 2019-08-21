@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  * @date 2019-01-26
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com")
 public class AdviceBootstart {
 
     public static void main(String[] args) {

@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @version 1.0
  * @date 2019-01-26
  */
+@RestControllerAdvice
 public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
@@ -34,23 +37,22 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
         return true;
     }
 
+    @Nullable
     @Override
     @SuppressWarnings("all")
-    public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType,
-                                  Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest,
-                                  ServerHttpResponse serverHttpResponse) {
-        ConmmonResponse<Object> response = new ConmmonResponse<>(0, "");
+    public Object beforeBodyWrite(@Nullable Object o,
+        MethodParameter methodParameter,
+        MediaType mediaType,
+        Class<? extends HttpMessageConverter<?>> aClass,
+        ServerHttpRequest serverHttpRequest,
+        ServerHttpResponse serverHttpResponse) {
 
-        // o is null -> return response
-        if (o == null){
+        ConmmonResponse<Object> response = new ConmmonResponse<>(0, "");
+        if (null == o) {
             return response;
-        }
-        // o is instanceof ConmmonResponse-> return o
-        else if (o instanceof ConmmonResponse){
+        } else if (o instanceof ConmmonResponse) {
             response = (ConmmonResponse<Object>) o;
-        }
-        // response.setData(o);
-        else {
+        } else {
             response.setData(o);
         }
 
