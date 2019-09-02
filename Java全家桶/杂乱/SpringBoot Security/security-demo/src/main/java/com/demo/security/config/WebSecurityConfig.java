@@ -24,11 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home").permitAll() //  允许所有用户访问"/"和"/index.html"
+            // 允许所有用户访问"/"和"/index.html"
+                .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated() // 其他地址的访问均需验证权限
                 .and()
                 .formLogin()
-                .loginPage("/login")  //  登录页
+            // 登录页
+                .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout() //设置注销
